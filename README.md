@@ -14,10 +14,11 @@ After this adjust the code to fit the purpose of your own business problem/app.
 
 A linux docker container is used for the build and deployment process of the app.
 So besides docker (use a recent version) the only thing you need on your local development system is a git client
-and an editor or IDE for Go.
+and an editor or IDE for Java.
  
-Usually the IDE requires an locally installed [Go](https://golang.org/). Please use at least version 1.11 because this
-project uses [Go Modules](https://github.com/golang/go/wiki/Modules).
+For compatability with AWS Lambda, this project uses [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+For dependency management, [Apache Maven 3](https://maven.apache.org/) is used. 
+Depending on your IDE, you might need to install it might need to install these first. Some IDEs come with them pre-installed.  
 
 ### Build
 
@@ -27,15 +28,16 @@ Execute the build with
 docker-build build
 ```
 
-This will build a self contained web application `dist/<appname>app.exe` which can be used to run and test your app 
-as a local process on your dev system and a deployment package for aws lambda `dist/lambda` which 
+This will build a self contained web application `cmd/selfhosted/target/selfhosted-1.0-SNAPSHOT.jar` which contains your
+application backend and can be run via `java -jar selfhosted-1.0-SNAPSHOT.jar` as a local process on your dev system,
+ as well as a deployment package for aws lambda `cmd\awslambda\target\lambda.zip` which 
 should be used for the production deployment of your app in d.velop cloud.
 
 ## Run and test your app locally
 
-Just start `dist/<appname>app.exe` to run and test your app on a local dev environment.
-Please keep in mind, that some functions like authentication
-which require the presence of additional apps (e.g. IdentityProviderApp), 
+Just start `com.dvelop.archetype.cmd.selfhosted.VacationProcessApp` from your IDE, using the project top level directory
+ as a working path, to test your app on a local dev environment.
+Please keep in mind, that some functions which require the presence of additional apps (e.g. IdentityProviderApp for authentication), 
 won't work because these apps are not available on your local system.
 
 ## Rename the app
