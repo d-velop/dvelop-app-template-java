@@ -23,7 +23,7 @@ submitBtn.addEventListener("click", function (e) {
     const r = new XMLHttpRequest();
     r.addEventListener("load", function () {
         if (r.status === 202) {
-            window.location = "../";
+            window.location = "./";
         } else {
             snackbar.labelText = "Request failed. Server returned " + r.status;
             snackbar.open();
