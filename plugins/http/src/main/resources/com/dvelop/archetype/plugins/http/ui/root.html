@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <title th:text="${app.name}">App</title>
+    <link rel="stylesheet" th:attr="href=${app.assetBasePath} + '/root.css'"/>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
+<div>
+    <header>
+        <h1 th:text="${app.name}">App</h1>
+    </header>
+    <main>
+        <dl>
+            <dt>Version</dt>
+            <dd id="appver" th:text="${app.version}">?.?.?</dd>
+            <a href="requests">Vacation Requests</a>
+        </dl>
+    </main>
+</div>
+</body>
+</html>

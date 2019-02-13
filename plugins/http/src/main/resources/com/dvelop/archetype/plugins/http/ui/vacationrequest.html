@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${app.name}">App</title>
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" th:attr="href=${app.assetBasePath} + '/vacationrequest.css'"/>
+</head>
+
+<body class="mdc-typography">
+<form id="form" class="mdc-layout-grid" th:with="editable=${dto.from} == ''">
+        <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                <h1 class="mdc-typography--headline5">Vacation request</h1>
+            </div>
+            <div class="mdc-layout-grid__cell">
+                <div class="mdc-text-field mdc-text-field--with-leading-icon">
+                    <i class="material-icons mdc-text-field__icon">event</i>
+                    <input name="from" type="date" id="from" class="mdc-text-field__input"
+                           aria-controls="from-helper-text"
+                           aria-describedby="from-helper-text"
+                           required
+                           th:attr="value=${dto.from}, disabled=${editable} ? 'true'">
+                    <label for="from" class="mdc-floating-label">From</label>
+                    <div class="mdc-line-ripple"></div>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__cell">
+                <div class="mdc-text-field mdc-text-field--with-leading-icon">
+                    <i class="material-icons mdc-text-field__icon">event</i>
+                    <input name="to" type="date" id="to" class="mdc-text-field__input"
+                           aria-controls="to-helper-text"
+                           aria-describedby="to-helper-text"
+                           required
+                           th:attr="value=${dto.to}, disabled=${editable} ? 'true'">
+                    <label for="to" class="mdc-floating-label">To</label>
+                    <div class="mdc-line-ripple"></div>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__cell">
+                <div class="mdc-select">
+                    <i class="mdc-select__dropdown-icon"></i>
+                    <select name="type" id="type" class="mdc-select__native-control" required th:attr="value=${dto.type}, disabled=${editable} ? 'true'">
+                        <option value="Annual" selected>Annual leave</option>
+                        <option value="Special">Special leave</option>
+                        <option value="Compensatory">Compensatory time off</option>
+                    </select>
+                    <label for="type" class="mdc-floating-label mdc-floating-label--float-above">Type</label>
+                    <div class="mdc-line-ripple"></div>
+                </div>
+            </div>
+
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                <div class="mdc-text-field mdc-text-field--textarea">
+                    <textarea name="comment" id="comment" class="mdc-text-field__input" rows="5" cols="40"
+                              th:text="${dto.comment}" th:attr="value=${dto.comment}, disabled=${editable} ? 'true'">Kommentar</textarea>
+                    <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                            <label for="comment" class="mdc-floating-label">Comment</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dmc-form__actions">
+            <button type="submit" class="mdc-button" id="submit">Ok</button>
+        </div>
+</form>
+<div class="mdc-snackbar">
+    <div class="mdc-snackbar__surface">
+        <div class="mdc-snackbar__label"
+             role="status"
+             aria-live="polite">Placeholder
+        </div>
+    </div>
+</div>
+<script async  th:attr="src=${app.assetBasePath} + '/vacationrequest.js'"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dvelop.archetype</groupId>
+    <artifactId>dvelop-app-template-java</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <version.dvelop-sdk>1.0-SNAPSHOT</version.dvelop-sdk>
+
+        <version.tomee>8.0.0-M2</version.tomee>
+        <version.cxf>3.2.4</version.cxf>
+        <version.johnzon-jaxrs>1.1.11</version.johnzon-jaxrs>
+        <version.jaxrs>2.1.1</version.jaxrs>
+        <version.javaee>7.0</version.javaee>
+        <version.slf4j>1.7.25</version.slf4j>
+
+        <version.junit>5.3.2</version.junit>
+        <version.mockito>2.23.4</version.mockito>
+        <version.hamcrest>1.3</version.hamcrest>
+        <version.surefire>2.22.1</version.surefire>
+    </properties>
+
+    <modules>
+        <module>cmd</module>
+        <module>domain</module>
+        <module>plugins</module>
+        <module>ui</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${version.surefire}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+     <contributors>
+         <contributor>
+             <name>Thorsten Lanfer</name>
+             <email>tlanfer@gmail.com</email>
+             <roles>
+                 <role>Developer</role>
+             </roles>
+             <organization>d.velop AG</organization>
+             <organizationUrl>https://github.com/d-velop</organizationUrl>
+         </contributor>
+     </contributors>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${version.javaee}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>${version.hamcrest}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${version.mockito}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
