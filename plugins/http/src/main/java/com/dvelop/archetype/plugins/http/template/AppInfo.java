@@ -10,7 +10,7 @@ import javax.inject.Inject;
 public class AppInfo {
 
     @Inject
-    @ConfigProperty(value = "app.name", fallback = ApplicationName.APP_PREFIX)
+    @ConfigProperty(value = "app.name", fallback = ApplicationName.APP_NAME)
     String name;
 
     @Inject

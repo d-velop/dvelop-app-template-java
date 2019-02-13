@@ -2,7 +2,6 @@ package com.dvelop.archetype.cmd.selfhosted;
 
 
 import com.dvelop.archetype.ApplicationName;
-import org.apache.johnzon.mapper.JohnzonConverter;
 import org.apache.tomee.embedded.Configuration;
 import org.apache.tomee.embedded.Container;
 
@@ -22,7 +21,7 @@ public class VacationProcessApp {
 
         File here = new File("ui");
         System.out.println(here.getAbsoluteFile());
-        container.deployClasspathAsWebApp(ApplicationName.APP_PREFIX, here);
+        container.deployClasspathAsWebApp(ApplicationName.APP_NAME, here);
 
         container.await();
     }

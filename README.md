@@ -62,11 +62,7 @@ For now the following places have to be adjusted manually as soon as the name of
 1.  `Makefile` change the `APP_NAME` variable. Furthermore change the `DOMAIN_SUFFIX` to a domain you own like `yourcompany.com`
 2.  `/terraform/backend.tf` change the `bucket` names (2 occurrences)
 3.  `docker-build.bat` and `dockerbuild.sh` change the `APPNAME` variable      
-4.  `/domain/plugins/conf/config.go` change the `AppName` const
-5.  `go.mod` change the module name. Unfortunately this requires to change the import path in a lot of go files from
-    `github.com/d-velop/dvelop-app-template-go` to something like `github.com/<yourcompany>/<appname>`.
-    
-The 'Replace' function of your IDE should help.
+4.  `domain\src\main\java\com\dvelop\archetype\ApplicationName.java` change the `APP_NAME` const
 
 **Please finish at least step 1 and step 2 before you [deploy](#deployment) your app because the names of a lot of
 AWS resources are derived from the `APP_NAME` and `DOMAIN_SUFFIX`. Changing them afterwards requires a
