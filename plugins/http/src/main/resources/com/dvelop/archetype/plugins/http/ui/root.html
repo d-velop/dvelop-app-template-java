@@ -18,7 +18,7 @@
         <dl>
             <dt>Version</dt>
             <dd id="appver" th:text="${app.version}">?.?.?</dd>
-            <a href="requests">Vacation Requests</a>
+            <a th:attr="href=${app.name} + '/requests'">Vacation Requests</a>
         </dl>
     </main>
 </div>
