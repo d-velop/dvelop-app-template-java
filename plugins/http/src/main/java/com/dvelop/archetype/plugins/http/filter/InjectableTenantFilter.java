@@ -24,7 +24,7 @@ public class InjectableTenantFilter extends TenantFilter {
     Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Inject
-    @ConfigProperty(value = "SIGNATURE_SECRET", mandatory = true)
+    @ConfigProperty(value = "SIGNATURE_SECRET", mandatory = false)
     String signatureSecretString;
 
     @Inject
