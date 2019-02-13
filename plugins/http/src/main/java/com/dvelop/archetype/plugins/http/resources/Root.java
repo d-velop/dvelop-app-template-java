@@ -65,8 +65,8 @@ public class Root {
     public Response getRoot() {
         RootDto dto = new RootDto(appInfo.getName(), appInfo.getVersion());
 
-        dto.getLinks().put("self", new com.dvelop.archetype.plugins.http.Link(uriInfo.getBaseUri().relativize(URI.create("/vacationprocess4j"))));
-        dto.getLinks().put("featuresdescription", new Link(uriInfo.getBaseUri().relativize(URI.create("/vacationprocess4j" + Features.PATH))));
+        dto.getLinks().put("self", new com.dvelop.archetype.plugins.http.Link(uriInfo.getBaseUri().relativize(URI.create("/"+appInfo.getName()))));
+        dto.getLinks().put("featuresdescription", new Link(uriInfo.getBaseUri().relativize(URI.create("/" + appInfo.getName() + Features.PATH))));
 
         return Response.ok(dto).build();
     }

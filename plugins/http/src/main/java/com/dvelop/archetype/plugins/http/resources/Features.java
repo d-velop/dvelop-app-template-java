@@ -42,7 +42,7 @@ public class Features {
                         "Manage vacation requests",
                         "Apply for vacation and approve the vacation requests of your employees",
                         "Your vacation requests and the requests of your employees",
-                        "/" + appInfo.getName() + "/"+List.PATH,
+                        "/" + appInfo.getName() + List.PATH,
                         "#adff2f",
                         "dv-search"
                 )
