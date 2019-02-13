@@ -7,6 +7,7 @@ import com.dvelop.archetype.VacationRequestState;
 import com.dvelop.archetype.VacationType;
 import com.dvelop.archetype.plugins.context.TenantHolder;
 import com.dvelop.archetype.plugins.http.MediaType;
+import com.dvelop.archetype.plugins.http.template.AppInfo;
 import com.dvelop.archetype.usecases.applyForVacation.UseCaseApplyForVacation;
 
 import javax.enterprise.context.RequestScoped;
@@ -63,6 +64,9 @@ public class List {
 
     }
 
+    @Inject
+    AppInfo appInfo;
+
     @POST
     public Response newRequest(){
         VacationRequest request = new VacationRequest();
@@ -73,7 +77,7 @@ public class List {
         useCaseApplyForVacation.execute(request);
 
         return Response.status(Response.Status.CREATED)
-                .header("Location", tenant.getBaseUri()+"/vacationprocess4j/requests/"+request.getId())
+                .header("Location", tenant.getBaseUri()+"/"+appInfo.getName()+"/requests/"+request.getId())
                 .build();
     }
 
