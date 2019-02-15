@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APPNAME=acme-apptemplatego
+APPNAME=acme-apptemplatejava
 BUILDCONTAINER=registry.invalid/${APPNAME}_build
 
 DENV=
