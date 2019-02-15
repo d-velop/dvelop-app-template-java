@@ -14,7 +14,7 @@ public class AppInfo {
     String name;
 
     @Inject
-    @ConfigProperty("BUILD_VERSION")
+    @ConfigProperty(value = "BUILD_VERSION", fallback = "??")
     String version;
 
     @Inject
