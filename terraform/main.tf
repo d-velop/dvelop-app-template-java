@@ -76,12 +76,12 @@ module "asset_cdn" {
 # - The module might fail because it will take some time (up to or more than 30 min)
 #   for a certificate to be validated by AWS. If this is the case just invoke terraform a second time.
 
-module "api_custom_domains" {
-  source                                                = "modules/api_custom_domain"
-  hosted_zone_id                                        = "${module.hosted_zone.id}"
-  aws_api_gateway_rest_api_id                           = "${module.serverless_lambda_app.aws_api_gateway_rest_api_id}"
-  aws_api_gateway_rest_api_endpoint_configuration_types = "${module.serverless_lambda_app.aws_api_gateway_rest_api_endpoint_configuration_types}"
-  stages                                                = "${module.serverless_lambda_app.stages}"
-}
+#module "api_custom_domains" {
+#  source                                                = "modules/api_custom_domain"
+#  hosted_zone_id                                        = "${module.hosted_zone.id}"
+#  aws_api_gateway_rest_api_id                           = "${module.serverless_lambda_app.aws_api_gateway_rest_api_id}"
+#  aws_api_gateway_rest_api_endpoint_configuration_types = "${module.serverless_lambda_app.aws_api_gateway_rest_api_endpoint_configuration_types}"
+#  stages                                                = "${module.serverless_lambda_app.stages}"
+#}
 
 
