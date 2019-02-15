@@ -18,7 +18,7 @@ public class AppInfo {
     String version;
 
     @Inject
-    @ConfigProperty("ASSET_BASE_PATH")
+    @ConfigProperty(value = "ASSET_BASE_PATH", fallback = "/" + ApplicationName.APP_NAME)
     String assetBasePath;
 
     public String getName() {
