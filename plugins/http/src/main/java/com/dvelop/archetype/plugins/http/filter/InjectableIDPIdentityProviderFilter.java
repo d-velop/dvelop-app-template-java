@@ -41,4 +41,8 @@ public class InjectableIDPIdentityProviderFilter extends IDPIdentityProviderFilt
         identityHolder.setIdentity(idpIdentity);
     }
 
+    @Override
+    public void setIDPAuthsessionId(String s) {
+
+    }
 }
