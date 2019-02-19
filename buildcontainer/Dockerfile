@@ -1,7 +1,7 @@
 FROM maven:slim
 
 RUN apt-get update && \
-    apt-get -y install --no-install-recommends ca-certificates unzip zip python curl openssh-client git-core build-essential && \
+    apt-get -y install --no-install-recommends ca-certificates unzip zip python curl openssh-client git-core build-essential jq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

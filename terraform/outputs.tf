@@ -14,3 +14,6 @@ output "endpoint"{
   value = "${module.serverless_lambda_app.endpoints}"
 }
 
+output "domain" {
+  value = "${var.appname}${var.domainsuffix}"
+}
