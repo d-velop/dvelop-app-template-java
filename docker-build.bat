@@ -21,9 +21,9 @@ docker build -t %BUILDCONTAINER% ./buildcontainer > ./buildcontainer/build.log &
 setlocal disabledelayedexpansion
 
 if "%1"=="it" (
-    rem docker run -it --rm %denv% --mount type=bind,src=%cd%,dst=/build --mount type=volume,src=%APPNAME%_m2_repo,dst=/root/.m2/repository --entrypoint /bin/bash %BUILDCONTAINER%
-    docker run -it --rm %denv% --mount type=bind,src=%cd%,dst=/build --mount type=bind,src=%USERPROFILE%\.m2\repository,dst=/root/.m2/repository --entrypoint /bin/bash %BUILDCONTAINER%
+    docker run -it --rm %denv% --mount type=bind,src=%cd%,dst=/build --mount type=volume,src=%APPNAME%_m2_repo,dst=/root/.m2/repository --entrypoint /bin/bash %BUILDCONTAINER%
+    rem docker run -it --rm %denv% --mount type=bind,src=%cd%,dst=/build --mount type=bind,src=%USERPROFILE%\.m2\repository,dst=/root/.m2/repository --entrypoint /bin/bash %BUILDCONTAINER%
 ) else (
-    rem docker run --rm %denv% --mount type=bind,src=%cd%,dst=/build --mount type=volume,src=%APPNAME%_m2_repo,dst=/root/.m2/repository %BUILDCONTAINER% %*
-    docker run --rm %denv% --mount type=bind,src=%cd%,dst=/build --mount type=bind,src=%USERPROFILE%\.m2\repository,dst=/root/.m2/repository %BUILDCONTAINER% %*
+    docker run --rm %denv% --mount type=bind,src=%cd%,dst=/build --mount type=volume,src=%APPNAME%_m2_repo,dst=/root/.m2/repository %BUILDCONTAINER% %*
+    rem docker run --rm %denv% --mount type=bind,src=%cd%,dst=/build --mount type=bind,src=%USERPROFILE%\.m2\repository,dst=/root/.m2/repository %BUILDCONTAINER% %*
 )
