@@ -31,7 +31,6 @@ plan: build-all tf-init asset_hash
 	-var "asset_hash=$(ASSET_HASH)" \
 	-out=$(PLAN)
 
-
 apply: plan
 	cd ./terraform && \
 	terraform apply -input=false -auto-approve=true $(PLAN)
@@ -45,10 +44,17 @@ asset_hash:
 
 deploy: apply deploy-assets
 
-
 show: tf-init
 	cd ./terraform && \
 	terraform show
+
+rename:
+	if [ -z $${NAME} ]; then echo "NAME is not set. Usage: rename NAME=NEW_APP_NAME"; exit 1; fi
+	@echo Rename App to $(NAME) ...
+	find . -name "docker-build.*" -or -name "Makefile" -or -name "*.tf" -or -name "*.java" | while read f; do		\
+		echo "Processing file '$$f'";															\
+		sed -i 's/$(APP_NAME)/$(NAME)/g' $$f;														\
+	done
 
 destroy: tf-init
 	echo "destroy is disabled. Uncomment in Makefile to enable destroy."
