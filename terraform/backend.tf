@@ -5,8 +5,8 @@ terraform {
   backend "s3" {
     # bucket names must be globally unique across all AWS customers
     # so we choose a combination of company prefix ('acme')
-    # and purpose (terraform) and appname (apptemplatego)
-    bucket = "acme-terraform-apptemplatejava"
+    # and purpose (terraform) and appname (apptemplate)
+    bucket = "acme-apptemplatejava-terraform"
     key    = "state"
 
     # variables can't be used
@@ -20,8 +20,8 @@ data "terraform_remote_state" "app" {
   config {
     # bucket names must be globally unique across all AWS customers
     # so we choose a combination of company prefix ('acme')
-    # and purpose (terraform) and appname (apptemplatego)
-    bucket = "acme-terraform-apptemplatejava"
+    # and purpose (terraform) and appname (apptemplate)
+    bucket = "acme-apptemplatejava-terraform"
     key    = "state"
 
     # variables can't be used
