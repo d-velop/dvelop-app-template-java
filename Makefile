@@ -35,11 +35,11 @@ plan: build-all tf-init asset_hash
 	$(eval PLAN=$(shell mktemp))
 	cd ./terraform && \
 	terraform plan -input=false \
-	-var "signature_secret=$(SIGNATURE_SECRET)" \
-	-var "build_version=$(BUILD_VERSION)" \
-	-var "appname=$(APP_NAME)" \
-	-var "domainsuffix=$(DOMAIN_SUFFIX)" \
-	-var "asset_hash=$(ASSET_HASH)" \
+	-var 'signature_secret="$(SIGNATURE_SECRET)"' \
+	-var 'build_version="$(BUILD_VERSION)"' \
+	-var 'appname="$(APP_NAME)"' \
+	-var 'domainsuffix="$(DOMAIN_SUFFIX)"' \
+	-var 'asset_hash="$(ASSET_HASH)"' \
 	-out=$(PLAN)
 
 apply: plan
@@ -70,7 +70,7 @@ rename:
 destroy: tf-init
 	echo "destroy is disabled. Uncomment in Makefile to enable destroy."
 	#cd ./terraform && \
-	#terraform destroy -var "signature_secret=$SIGNATURE_SECRET" -var "build_version=$build_version" -var "appname=$(APP_NAME)" -var "domainsuffix=$(DOMAIN_SUFFIX)" -input=false -force
+	#terraform destroy -var 'signature_secret="$SIGNATURE_SECRET"' -var 'build_version="$build_version"' -var 'appname="$(APP_NAME)"' -var 'domainsuffix="$(DOMAIN_SUFFIX)"' -input=false -force
 
 dns:
 	mkdir -p dist
