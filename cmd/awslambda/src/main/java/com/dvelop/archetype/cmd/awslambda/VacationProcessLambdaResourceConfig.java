@@ -15,14 +15,16 @@ import javax.ws.rs.core.Application;
 public class VacationProcessLambdaResourceConfig extends ResourceConfig {
 
     public VacationProcessLambdaResourceConfig() {
-        Application application = new Application();
-        forApplication(application);
+
         register(GatewayFeature.class);
         register(ThymeleafRenderer.class);
 
+        register(JacksonObjectMapperProvider.class);
+
         register(InjectableTenantFilter.class);
-//        register(InjectableIDPIdentityProviderFilter.class);
+        register(InjectableIDPIdentityProviderFilter.class);
 
         packages(Root.class.getPackage().getName());
     }
+
 }

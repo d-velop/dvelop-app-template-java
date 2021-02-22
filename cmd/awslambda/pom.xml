@@ -13,7 +13,7 @@
 
     <properties>
         <version.jrestless>0.6.0</version.jrestless>
-        <version.jersey>2.26</version.jersey>
+        <version.jersey>2.33</version.jersey>
     </properties>
 
     <build>
@@ -79,21 +79,40 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-core</artifactId>
+            <version>3.1.1.Final</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.glassfish.jersey.ext.cdi</groupId>
             <artifactId>jersey-weld2-se</artifactId>
             <version>${version.jersey}</version>
         </dependency>
+
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>${version.jersey}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-binding</artifactId>
+            <version>${version.jersey}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-jaxb</artifactId>
+            <version>${version.jersey}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
             <version>${version.jersey}</version>
         </dependency>
-
         <!--<dependency>-->
             <!--<groupId>org.glassfish.jersey.containers.glassfish</groupId>-->
             <!--<artifactId>jersey-gf-cdi</artifactId>-->
