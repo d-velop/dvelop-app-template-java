@@ -21,7 +21,7 @@ public class VacationProcessLambdaResourceConfig extends ResourceConfig {
         register(ThymeleafRenderer.class);
 
         register(InjectableTenantFilter.class);
-        register(InjectableIDPIdentityProviderFilter.class);
+//        register(InjectableIDPIdentityProviderFilter.class);
 
         packages(Root.class.getPackage().getName());
     }
