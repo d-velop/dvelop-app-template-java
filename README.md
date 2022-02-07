@@ -1,4 +1,8 @@
-# d.velop app template for Java
+# DEPRECATED: d.velop app template for Java
+
+<div align=center>
+<img alt="No Maintenance" src="https://img.shields.io/maintenance/no/2022?style=for-the-badge">
+<div>
 
 This template contains everything you need to write an app for d.velop cloud.
 
@@ -15,10 +19,10 @@ After this adjust the code to fit the purpose of your own business problem/app.
 A linux docker container is used for the build and deployment process of the app.
 So besides docker (use a recent version) the only thing you need on your local development system is a git client
 and an editor or IDE for Java.
- 
+
 For compatability with AWS Lambda, this project uses [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-For dependency management, [Apache Maven 3](https://maven.apache.org/) is used. 
-Depending on your IDE, you might need to install it might need to install these first. Some IDEs come with them pre-installed.  
+For dependency management, [Apache Maven 3](https://maven.apache.org/) is used.
+Depending on your IDE, you might need to install it might need to install these first. Some IDEs come with them pre-installed.
 
 ### Build
 
@@ -30,14 +34,14 @@ docker-build build
 
 This will build a self contained web application `cmd/selfhosted/target/selfhosted-1.0-SNAPSHOT.jar` which contains your
 application backend and can be run via `java -jar selfhosted-1.0-SNAPSHOT.jar` as a local process on your dev system,
- as well as a deployment package for aws lambda `cmd\awslambda\target\lambda.zip` which 
+ as well as a deployment package for aws lambda `cmd\awslambda\target\lambda.zip` which
 should be used for the production deployment of your app in d.velop cloud.
 
 ## Run and test your app locally
 
 Just start `com.dvelop.archetype.cmd.selfhosted.VacationProcessApp` from your IDE, using the project top level directory
  as a working path, to test your app on a local dev environment.
-Please keep in mind, that some functions which require the presence of additional apps (e.g. IdentityProviderApp for authentication), 
+Please keep in mind, that some functions which require the presence of additional apps (e.g. IdentityProviderApp for authentication),
 won't work because these apps are not available on your local system.
 
 ## Rename the app
@@ -51,11 +55,11 @@ The prefix can be selected during the registration process in d.velop cloud.
 If you choose a provider prefix which corresponds to your company name or an abbreviation of the company name
 it's very likely that it is available when you later register your app in d.velop cloud.
 
-For example if your company is named *Super Duper Software Limited* and the domain of your app 
+For example if your company is named *Super Duper Software Limited* and the domain of your app
 is *employees applying for vacation* your app should be named
-something like `superduperltd-vacationprocess`App. Note that the `App` suffix isn't used in the configuration files. 
+something like `superduperltd-vacationprocess`App. Note that the `App` suffix isn't used in the configuration files.
 
-Apps belonging to the core d.velop cloud platform don't have a provider prefix. 
+Apps belonging to the core d.velop cloud platform don't have a provider prefix.
 
 Use the `rename` target to rename your app:
 
@@ -77,12 +81,12 @@ redeployment of the AWS resources which takes some time**
 **Please read [Rename the app](#rename-the-app) before you proceed with the deployment.**
 
 You need an AWS Account to deploy your app. At the time of writing some of the AWS services are
-free to use for a limited amount of time and workload. 
-Check the [Free Tier](https://aws.amazon.com/free/) offering from AWS for the current conditions. 
+free to use for a limited amount of time and workload.
+Check the [Free Tier](https://aws.amazon.com/free/) offering from AWS for the current conditions.
 
 Manually create an IAM user with
-the appropriate rights to create the AWS resources defined by your terraform configuration. 
-You could start with a user who has the `arn:aws:iam::aws:policy/AdministratorAccess` policy to start quickly, 
+the appropriate rights to create the AWS resources defined by your terraform configuration.
+You could start with a user who has the `arn:aws:iam::aws:policy/AdministratorAccess` policy to start quickly,
 but you **should definitely restrict the rights of that IAM user to a minimum as soon as you go into production**.
 
 Configure the AWS credentials of the created IAM user by using one of the methods described in
@@ -117,8 +121,8 @@ between deployments) and will be much quicker.
 
 ### Test your endpoint
 
-The endpoint URLs are logged at the end of the deployment. Just invoke them in a browser to test your app.  
- 
+The endpoint URLs are logged at the end of the deployment. Just invoke them in a browser to test your app.
+
 ```
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
@@ -134,7 +138,7 @@ endpoint = [
 To watch the current deployment state you can invoke
 
 ```
-docker-build show 
+docker-build show
 ```
 
 at any time without changing your deployment.
@@ -153,7 +157,7 @@ for your hosted zone works before you use these modules**. Read the comments in 
 This module uses *aws cloudfront* as a CDN for your static assets. Furthermore it allows you to define
 a custom domain for your assets instead of the s3 URL. Your deployment should work perfectly without this module.
 
-#### api_custom_domain 
+#### api_custom_domain
 This module allows you to define a custom domain for your app endpoints. A custom domain name is required
 as soon as you register your app in the d.velop cloud center because the base path of your app must
 begin with the name of your app. So instead of the default endpoints
@@ -183,7 +187,7 @@ waste your time and start immediately to implement a solution for your business 
 
 #### `/cmd`
 
-Contains the main applications for this project. That is the self contained webapplication `/cmd/app` 
+Contains the main applications for this project. That is the self contained webapplication `/cmd/app`
 which can be run on your local machine and the lambda function `/cmd/lambda` for AWS.
 
 Don't put a lot of code in the application directory. Put that code in the `/domain` directory.
@@ -195,9 +199,9 @@ completely relies on the code from the `/domain` directory.
 
 Contains the vast majority of the code for this app.
 
-The structure follows the principles of 
+The structure follows the principles of
 [Clean Architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) or
-[Hexagonal Architecture](https://alistair.cockburn.us/coming-soon/) 
+[Hexagonal Architecture](https://alistair.cockburn.us/coming-soon/)
 and separates the core of the domain from external frameworks, the DB and the UI.
 
 The directory root contains the heart of the domain and has no dependencies to external 'things' like http or databases.
@@ -217,7 +221,7 @@ Contains test mocks which are relevant to more than one use case.
 ##### `/domain/plugins`
 
 Contains the dependencies to external 'things' like a database or the invocation channel e.g. http.
-The idea is to treat these external 'things' as plugins to the domain in order to keep 
+The idea is to treat these external 'things' as plugins to the domain in order to keep
 the domain simple, understandable and separately testable. Last but not least you are able to change external
 dependencies like the database later on without rewriting the whole app because the relevant code
 is not scattered over the whole codebase.
@@ -237,17 +241,17 @@ Contains the terraform files
 
 ### `/ui`
 
-Contains the webfrontend. 
+Contains the webfrontend.
 
 The frontend tooling is kept to a bare minimum to keep the whole project as simple as possible.
 Furthermore there are hundreds of possible combinations of frameworks and build tools which
 can be used for the frontend. So each developer has his own preferences about the tooling.
 
-Use your favorite tools for the frontend and change the `ui` folder accordingly. 
+Use your favorite tools for the frontend and change the `ui` folder accordingly.
 Don't forget to change the `deploy-assets` task in the `makefile` and the go:generate commands in `/domain/plugins/gui/`
 
-It's likely that we'll provide web projects using different tools and frameworks 
-which can be used to replace the `ui` folder in the future. 
+It's likely that we'll provide web projects using different tools and frameworks
+which can be used to replace the `ui` folder in the future.
 
 ## Go Modules
 
