@@ -2,7 +2,7 @@
 
 <div align=center>
 <img alt="No Maintenance" src="https://img.shields.io/maintenance/no/2022?style=for-the-badge">
-<div>
+</div>
 
 This template contains everything you need to write an app for d.velop cloud.
 
